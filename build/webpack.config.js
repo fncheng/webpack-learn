@@ -1,4 +1,5 @@
 const { VueLoaderPlugin } = require('vue-loader')
+const postcssPxToViewport = require('postcss-px-to-viewport')
 
 module.exports = {
   module: {
@@ -19,6 +20,9 @@ module.exports = {
                   ['postcss-preset-env',{
                     // 其他选项
                   },],
+                  new postcssPxToViewport({
+                    viewportWidth: 750
+                  })
                 ],
               },
             },
