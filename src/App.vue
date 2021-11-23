@@ -3,8 +3,9 @@
     <div id="nav">
       <h1>Hello Webpack</h1>
       <div>
-        <span class="title">Webpack打包sass</span>
+        <span class="title">Webpack打包sass2221211</span>
       </div>
+      <div class="container">1</div>
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
     </div>
