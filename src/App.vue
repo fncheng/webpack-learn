@@ -11,6 +11,13 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  created() {
+    console.log(VERSION);
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 #nav {
