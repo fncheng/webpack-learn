@@ -14,11 +14,6 @@ module.exports = (env) => {
   console.log('env: ', env)
   return {
     entry: './src/main.js',
-    output: {
-      clean: true,
-      path: path.resolve(__dirname, './dist'),
-      filename: 'index_bundle.js'
-    },
     target: 'web',
     devServer: {
       // static: {
