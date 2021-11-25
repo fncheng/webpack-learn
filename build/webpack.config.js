@@ -1,12 +1,8 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const dotenv = require('dotenv')
 const webpack = require('webpack')
-dotenv.config({
-  path: path.resolve(process.cwd(), '.env.development')
-})
-console.log('【process.env】', process.env.ENV)
+
 // console.log('dotenv: ', dotenv.config().parsed)
 // console.log(process.env.DB_HOST)
 
