@@ -13,8 +13,15 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      obj: {
+        a: 'a'
+      }
+    }
+  },
   created() {
-    console.log(VERSION);
+    console.log(this.obj.b?.c ?? 0);
   }
 }
 </script>
