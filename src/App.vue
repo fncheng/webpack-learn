@@ -6,6 +6,8 @@
         <span class="title">Webpack打包sass2221211</span>
       </div>
       <div class="container">1</div>
+      <div class="container bg-blue">2</div>
+      <div class="container bg-red">2</div>
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
     </div>
@@ -26,6 +28,11 @@ export default {
 }
 </script>
 
+<style scoped>
+.bg-red {
+  background-color: red;
+}
+</style>
 <style lang="scss" scoped>
 #nav {
   background-color: antiquewhite;

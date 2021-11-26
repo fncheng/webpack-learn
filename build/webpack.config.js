@@ -26,6 +26,19 @@ module.exports = (env) => {
       rules: [
         { test: /\.vue$/, loader: 'vue-loader' },
         {
+          test: /\.css$/,
+          use: [
+            {
+              loader: 'style-loader',
+              options: {
+                esModule: true
+              }
+            },
+            'css-loader',
+            'postcss-loader'
+          ]
+        },
+        {
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
