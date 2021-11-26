@@ -9,10 +9,10 @@
       <div class="container bg-blue">2</div>
       <div class="container bg-red">2</div>
       <div>
-        <img src="../src/assets/images/mcd.jpeg" alt="">
+        <img src="@/assets/images/mcd.jpeg" alt="" />
       </div>
       <div>
-        <img src="../src/assets/images/home.png" alt="">
+        <img src="@/assets/images/home.png" alt="" />
       </div>
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
@@ -29,7 +29,8 @@ export default {
     }
   },
   created() {
-    console.log(this.obj.b?.c ?? 0);
+    console.log(this.obj.b?.c ?? 0)
+    console.log('name', name)
   }
 }
 </script>

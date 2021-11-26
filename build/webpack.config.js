@@ -22,6 +22,11 @@ module.exports = (env) => {
       open: true,
       port: 9000
     },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '/src'),
+      },
+    },
     module: {
       rules: [
         { test: /\.vue$/, loader: 'vue-loader' },
