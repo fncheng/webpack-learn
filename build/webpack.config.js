@@ -63,7 +63,8 @@ module.exports = (env) => {
             // Compiles Sass to CSS
             'sass-loader'
           ]
-        }
+        },
+        { test: /\.(jpeg|png)/i, type: 'asset' }
       ]
     },
     plugins: [

@@ -2,6 +2,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const dotenv = require('dotenv')
 const webpackConfig = require('./webpack.config')
+const svgToMiniDataURI = require('mini-svg-data-uri')
 dotenv.config({
   path: path.resolve(process.cwd(), '.env.production')
 })
@@ -14,6 +15,18 @@ module.exports = merge(webpackConfig(), {
     filename: 'index_bundle.js'
   },
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] }]
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] },
+      {
+        test: /\.svg/i,
+        type: 'asset/inline',
+        generator: {
+          dataUrl: (content) => {
+            content = content.toString()
+            return svgToMiniDataURI(content)
+          }
+        }
+      }
+    ]
   }
 })
