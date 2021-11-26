@@ -1,8 +1,10 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const dotenv = require('dotenv')
+const TerserPlugin = require('terser-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 const svgToMiniDataURI = require('mini-svg-data-uri')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 dotenv.config({
   path: path.resolve(process.cwd(), '.env.production')
 })
@@ -27,6 +29,19 @@ module.exports = merge(webpackConfig(), {
           }
         }
       }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            // drop_console: true, // 这会删除console.*,如果只想删除console.log，请使用pure_funcs
+            pure_funcs: ['console.log'] // 这会删除console.log
+          }
+        }
+      })
     ]
   }
 })
