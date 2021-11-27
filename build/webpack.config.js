@@ -29,7 +29,7 @@ module.exports = (env) => {
     },
     module: {
       rules: [
-        { test: /\.vue$/, loader: 'vue-loader' },
+        { test: /\.vue$/, loader: 'vue-loader', exclude: /node_modules/ },
         {
           test: /\.css$/,
           use: [
