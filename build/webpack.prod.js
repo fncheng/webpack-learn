@@ -5,11 +5,8 @@ const TerserPlugin = require('terser-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 const svgToMiniDataURI = require('mini-svg-data-uri')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-dotenv.config({
-  path: path.resolve(process.cwd(), '.env.production')
-})
 
-console.log('【process.env】prod', process.env.ENV)
+console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackConfig(), {
   output: {
     clean: true,
