@@ -1,10 +1,15 @@
 const path = require('path')
+const dotenv = require('dotenv')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-console.log('cross-env: ', process.env.NODE_ENV);
+dotenv.config({
+  path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`)
+})
+
+console.log('cross-env: ', process.env.NODE_ENV, process.env.VUE_APP_BASE_API)
 
 // console.log('dotenv: ', dotenv.config().parsed)
 // console.log(process.env.DB_HOST)
@@ -51,7 +56,7 @@ module.exports = (env) => {
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
-            'style-loader',
+            process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             'css-loader',
             {
