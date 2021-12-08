@@ -1,13 +1,12 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
-const dotenv = require('dotenv')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 const svgToMiniDataURI = require('mini-svg-data-uri')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackConfig(), {
+  mode: 'production',
   output: {
     clean: true,
     path: path.resolve(__dirname, './dist'),
