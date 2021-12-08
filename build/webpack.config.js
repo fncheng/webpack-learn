@@ -2,6 +2,8 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 console.log('cross-env: ', process.env.NODE_ENV);
 
 // console.log('dotenv: ', dotenv.config().parsed)
@@ -24,8 +26,8 @@ module.exports = (env) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '/src'),
-      },
+        '@': path.resolve(__dirname, '/src')
+      }
     },
     module: {
       rules: [
@@ -33,12 +35,14 @@ module.exports = (env) => {
         {
           test: /\.css$/,
           use: [
-            {
-              loader: 'style-loader',
-              options: {
-                esModule: true
-              }
-            },
+            process.env.NODE_ENV !== 'production'
+              ? {
+                  loader: 'style-loader',
+                  options: {
+                    esModule: true
+                  }
+                }
+              : MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader'
           ]
@@ -80,6 +84,7 @@ module.exports = (env) => {
         inject: 'body',
         hash: true
       }),
+      new MiniCssExtractPlugin(),
       new webpack.DefinePlugin({
         VERSION: JSON.stringify('some')
       })
