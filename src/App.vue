@@ -16,11 +16,17 @@
       </div>
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
+      <HelloWorldVue />
     </div>
   </div>
 </template>
 <script>
+import HelloWorldVue from './HelloWorld.vue'
+import { num } from './use'
 export default {
+  components: {
+    HelloWorldVue
+  },
   data() {
     return {
       obj: {
@@ -31,6 +37,7 @@ export default {
   created() {
     console.log(this.obj.b?.c ?? 0)
     console.log('name', name)
+    console.log('num in App', num)
   }
 }
 </script>

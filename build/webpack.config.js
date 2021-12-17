@@ -32,11 +32,20 @@ module.exports = (env) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '/src')
-      }
+      },
+      extensions: ['.tsx', '.ts', '.js', '.vue']
     },
     module: {
       rules: [
         { test: /\.vue$/, loader: 'vue-loader', exclude: /node_modules/ },
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          options: {
+            appendTsSuffixTo: [/\.vue$/]
+          }
+        },
         {
           test: /\.css$/,
           use: [
