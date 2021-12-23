@@ -11,7 +11,7 @@ module.exports = merge(webpackConfig(), {
   output: {
     clean: true,
     path: path.resolve(__dirname, './dist'),
-    filename: 'index_bundle.js'
+    filename: 'js/[name].[contenthash].bundle.js'
   },
   module: {
     rules: [
@@ -39,13 +39,16 @@ module.exports = merge(webpackConfig(), {
     })
   ],
   optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
     minimize: true,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
           compress: {
             // drop_console: true, // 这会删除console.*,如果只想删除console.log，请使用pure_funcs
-            pure_funcs: ['console.log'] // 这会删除console.log
+            // pure_funcs: ['console.log'] // 这会删除console.log
           }
         }
       })

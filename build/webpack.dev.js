@@ -7,6 +7,9 @@ module.exports = () => {
   return merge(webpackConfig(), {
     mode: 'development',
     devtool: 'cheap-source-map',
+    output: {
+      filename: '[name].bundle.js',
+    },
     module: {
       rules: [
         /* @ts-ignore */

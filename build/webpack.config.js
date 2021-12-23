@@ -17,6 +17,10 @@ console.log('cross-env: ', process.env.NODE_ENV, process.env.VUE_APP_BASE_API)
 module.exports = (env) => {
   return {
     entry: './src/main.js',
+    // entry: {
+    //   main: './src/main.js',
+    //   vendor: [path.resolve(__dirname, '../src/splitChunk.js')]
+    // },
     target: 'web',
     devServer: {
       // static: {
