@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 const svgToMiniDataURI = require('mini-svg-data-uri')
+const CopyPlugin = require('copy-webpack-plugin')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackConfig(), {
@@ -27,6 +28,16 @@ module.exports = merge(webpackConfig(), {
       }
     ]
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../static'),
+          to: path.resolve(__dirname, '../dist/static')
+        }
+      ]
+    })
+  ],
   optimization: {
     minimize: true,
     minimizer: [

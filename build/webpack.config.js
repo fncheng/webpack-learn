@@ -98,7 +98,9 @@ module.exports = (env) => {
         inject: 'body',
         hash: true
       }),
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash].css'
+      }),
       new webpack.DefinePlugin({
         VERSION: JSON.stringify('some')
       })
