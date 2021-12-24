@@ -10,6 +10,9 @@ module.exports = () => {
     devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: true,
+      proxy: {
+        '/': { target: 'http://127.0.0.1:3000' }
+      }
     },
     output: {
       path: path.resolve(__dirname, process.env.publicPath ?? '/', './dist'),
