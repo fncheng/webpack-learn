@@ -7,7 +7,10 @@ console.log('【process.env】dev', process.env.ENV)
 module.exports = () => {
   return merge(webpackConfig(), {
     mode: 'development',
-    devtool: 'cheap-source-map',
+    devtool: 'eval-source-map',
+    devServer: {
+      historyApiFallback: true,
+    },
     output: {
       path: path.resolve(__dirname, process.env.publicPath ?? '/', './dist'),
       filename: 'js/[name].[contenthash].bundle.js',
