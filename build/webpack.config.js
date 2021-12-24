@@ -91,7 +91,8 @@ module.exports = (env) => {
             'sass-loader'
           ]
         },
-        { test: /\.(jpeg|png)/i, type: 'asset' }
+        { test: /\.(jpeg|png)/i, type: 'asset' },
+        { test: /\.gif/i, type: 'asset' }
       ]
     },
     plugins: [
