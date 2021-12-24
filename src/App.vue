@@ -14,10 +14,14 @@
       <div>
         <img src="@/assets/images/home.png" alt="" />
       </div>
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
+      <div>
+        <img src="@/assets/images/401.gif" alt="" />
+      </div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
       <HelloWorldVue />
     </div>
+    <router-view />
   </div>
 </template>
 <script>
@@ -38,6 +42,7 @@ export default {
     console.log(this.obj.b?.c ?? 0)
     console.log('name', name)
     console.log('num in App', num)
+    console.log('process', process.env.VERSION)
   }
 }
 </script>
