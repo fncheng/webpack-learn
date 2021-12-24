@@ -10,8 +10,9 @@ module.exports = merge(webpackConfig(), {
   mode: 'production',
   output: {
     clean: true,
-    path: path.resolve(__dirname, './dist'),
-    filename: 'js/[name].[contenthash].bundle.js'
+    path: path.resolve(__dirname, process.env.publicPath ?? '/', './dist'),
+    filename: 'js/[name].[contenthash].bundle.js',
+    publicPath: process.env.publicPath ?? '/'
   },
   module: {
     rules: [
@@ -40,7 +41,7 @@ module.exports = merge(webpackConfig(), {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: 'all'
     },
     minimize: true,
     minimizer: [
