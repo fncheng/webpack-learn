@@ -10,9 +10,10 @@ module.exports = merge(webpackConfig(), {
   mode: 'production',
   output: {
     clean: true,
-    path: path.resolve(__dirname, process.env.publicPath ?? '/', './dist'),
-    filename: 'js/[name].[contenthash].bundle.js',
-    publicPath: process.env.publicPath ?? '/'
+    path: path.resolve(__dirname, 'dist'),
+    filename:
+      (process.env.buildPath ?? '') + 'js/[name].[contenthash].bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -34,7 +35,7 @@ module.exports = merge(webpackConfig(), {
       patterns: [
         {
           from: path.resolve(__dirname, '../static'),
-          to: path.resolve(__dirname, '../dist/static')
+          to: path.resolve(__dirname, '../dist/static/dll')
         }
       ]
     })

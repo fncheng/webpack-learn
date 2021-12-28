@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 dotenv.config({
   path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`)
 })
-console.log('cross-env: ', process.env.NODE_ENV, process.env.VUE_APP_BASE_API)
+console.log('cross-env: ', process.env.NODE_ENV)
 
 // console.log('dotenv: ', dotenv.config().parsed)
 // console.log(process.env.DB_HOST)
@@ -105,7 +105,7 @@ module.exports = (env) => {
         hash: true
       }),
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash].css'
+        filename: (process.env.buildPath ?? '') + 'css/[name].[contenthash].css'
       }),
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(process.env),
