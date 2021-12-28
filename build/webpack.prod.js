@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const webpackConfig = require('./webpack.config')
 const svgToMiniDataURI = require('mini-svg-data-uri')
 const CopyPlugin = require('copy-webpack-plugin')
+const { setBuildPath } = require('./utils')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackConfig(), {
@@ -11,8 +12,7 @@ module.exports = merge(webpackConfig(), {
   output: {
     clean: true,
     path: path.resolve(__dirname, 'dist'),
-    filename:
-      (process.env.buildPath ?? '') + 'js/[name].[contenthash].bundle.js',
+    filename: setBuildPath(process.env.buildPath),
     publicPath: '/'
   },
   module: {
