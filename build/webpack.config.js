@@ -13,6 +13,8 @@ console.log('cross-env: ', process.env.NODE_ENV)
 // console.log('dotenv: ', dotenv.config().parsed)
 // console.log(process.env.DB_HOST)
 
+const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+
 module.exports = (env) => {
   return {
     entry: './src/main.js',
@@ -52,7 +54,7 @@ module.exports = (env) => {
         {
           test: /\.css$/,
           use: [
-            process.env.NODE_ENV !== 'production'
+            !IS_PRODUCTION
               ? {
                   loader: 'style-loader',
                   options: {
@@ -68,9 +70,7 @@ module.exports = (env) => {
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
-            process.env.NODE_ENV !== 'production'
-              ? 'style-loader'
-              : MiniCssExtractPlugin.loader,
+            !IS_PRODUCTION ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             'css-loader',
             {

@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack server --config ./build/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js -o dist"
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js -o dist",
+    "build:dev": "cross-env NODE_ENV=development webpack --config ./build/webpack.prod.js -o dist"
   },
   "dependencies": {
     "axios": "^0.24.0",
