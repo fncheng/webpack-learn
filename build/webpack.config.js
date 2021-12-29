@@ -105,7 +105,7 @@ module.exports = (env) => {
         hash: true
       }),
       new MiniCssExtractPlugin({
-        filename: (process.env.buildPath ?? '') + 'css/[name].[contenthash].css'
+        filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
       }),
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(process.env),
