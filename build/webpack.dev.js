@@ -1,15 +1,15 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
-const webpackConfig = require('./webpack.config')
+const webpackBase = require('./webpack.base')
 const EslintWebpackPlugin = require('eslint-webpack-plugin')
 
-console.log('【process.env】dev', process.env.ENV)
 module.exports = () => {
-  return merge(webpackConfig(), {
+  return merge(webpackBase(), {
     mode: 'development',
     devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: true,
+      port: 1688,
       proxy: {
         '/': { target: 'http://127.0.0.1:3000' }
       }

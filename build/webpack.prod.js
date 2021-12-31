@@ -1,13 +1,13 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
-const webpackConfig = require('./webpack.config')
+const webpackBase = require('./webpack.base')
 const svgToMiniDataURI = require('mini-svg-data-uri')
 const CopyPlugin = require('copy-webpack-plugin')
 const { setBuildPath } = require('./utils')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
-module.exports = merge(webpackConfig(), {
+module.exports = merge(webpackBase(), {
   mode: 'production',
   output: {
     clean: true,

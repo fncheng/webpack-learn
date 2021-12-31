@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const path = require('path')
 const dotenv = require('dotenv')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -8,13 +9,17 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 dotenv.config({
   path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`)
 })
-console.log('cross-env: ', process.env.NODE_ENV)
+console.log(chalk.hex('#4E9F3D')('process.env.NODE_ENV', process.env.NODE_ENV))
+console.log(chalk.hex('#4E9F3D')('process.env.buildPath', process.env.buildPath))
+console.log(chalk.hex('#4E9F3D')('process.env.routerBase', process.env.routerBase))
+console.log(chalk.hex('#4E9F3D')('process.env.VUE_APP_BASE_API', process.env.VUE_APP_BASE_API))
 
 // console.log('dotenv: ', dotenv.config().parsed)
 // console.log(process.env.DB_HOST)
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
 
+// eslint-disable-next-line
 module.exports = (env) => {
   return {
     entry: './src/main.js',
@@ -31,8 +36,7 @@ module.exports = (env) => {
         logging: 'warn'
       },
       compress: true,
-      open: true,
-      port: 9000
+      open: true
     },
     resolve: {
       alias: {
