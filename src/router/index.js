@@ -9,7 +9,17 @@ const syncRoutes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/jsx',
+    name: 'Some',
+    component: () => import('../views/Some.jsx')
   },
 ]
 console.log('process.env.routerBase', process.env.routerBase);

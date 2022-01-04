@@ -29,9 +29,6 @@ module.exports = (env) => {
     // },
     target: 'web',
     devServer: {
-      // static: {
-      //   directory: path.join(__dirname, 'public'),
-      // },
       client: {
         logging: 'warn'
       },
@@ -47,6 +44,7 @@ module.exports = (env) => {
     module: {
       rules: [
         { test: /\.vue$/, loader: 'vue-loader', exclude: /node_modules/ },
+        { test: /\.jsx?$/, exclude: /node_modules/, use: ['babel-loader'] },
         {
           test: /\.tsx?$/,
           loader: 'ts-loader',

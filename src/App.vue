@@ -17,8 +17,8 @@
       <div>
         <img src="@/assets/images/401.gif" alt="" />
       </div>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> |
+      <router-link to="/jsx">JSX</router-link>
       <HelloWorldVue />
     </div>
     <router-view />
