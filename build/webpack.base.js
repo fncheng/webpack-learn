@@ -7,7 +7,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 dotenv.config({
-  path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`)
+  path: path.resolve(__dirname, `../.env.${process.env.NODE_ENV}`)
 })
 console.log(chalk.hex('#4E9F3D')('process.env.NODE_ENV', process.env.NODE_ENV))
 console.log(chalk.hex('#4E9F3D')('process.env.buildPath', process.env.buildPath))
