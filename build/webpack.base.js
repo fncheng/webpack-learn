@@ -47,11 +47,16 @@ module.exports = (env) => {
         { test: /\.jsx?$/, exclude: /node_modules/, use: ['babel-loader'] },
         {
           test: /\.tsx?$/,
-          loader: 'ts-loader',
           exclude: /node_modules/,
-          options: {
-            appendTsSuffixTo: [/\.vue$/]
-          }
+          use: [
+            'babel-loader',
+            {
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/]
+              }
+            }
+          ]
         },
         {
           test: /\.css$/,

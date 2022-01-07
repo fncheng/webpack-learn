@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "target": "es5",
-    "jsx": "react",
+    "jsx": "preserve",
     "allowJs": true,
     "module": "es2020",
     "moduleResolution": "node"
