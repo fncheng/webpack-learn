@@ -5,6 +5,7 @@ const webpackBase = require('./webpack.base')
 const svgToMiniDataURI = require('mini-svg-data-uri')
 const CopyPlugin = require('copy-webpack-plugin')
 const { setBuildPath } = require('./utils')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackBase(), {
@@ -38,6 +39,9 @@ module.exports = merge(webpackBase(), {
           to: path.resolve(__dirname, '../dist/static/dll')
         }
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
     })
   ],
   optimization: {

@@ -6,7 +6,7 @@ const EslintWebpackPlugin = require('eslint-webpack-plugin')
 module.exports = () => {
   return merge(webpackBase(), {
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     devServer: {
       historyApiFallback: true,
       port: 1688,

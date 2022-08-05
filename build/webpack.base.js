@@ -111,9 +111,9 @@ module.exports = (env) => {
         inject: 'body',
         hash: true
       }),
-      new MiniCssExtractPlugin({
-        filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
+      // }),
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(process.env),
         'process.env.VERSION': JSON.stringify(process.env.VUE_APP_BASE_API)
