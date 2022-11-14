@@ -3,6 +3,7 @@
     <ul>
       <li v-for="(item, index) in list" :key="index">{{ item }}</li>
     </ul>
+    <button @click="handleClick">Click me!</button>
   </div>
 </template>
 
@@ -20,7 +21,9 @@ export default Vue.extend({
     this.list.push(111)
   },
   methods: {
-    init() {
+    init() {},
+    handleClick() {
+      this.$emit('myClick', 123, 'code0')
     }
   }
 })

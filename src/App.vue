@@ -19,7 +19,7 @@
       </div>
       <router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> |
       <router-link to="/jsx">JSX</router-link>
-      <HelloWorldVue />
+      <HelloWorldVue @myClick="myClick" />
     </div>
     <router-view />
   </div>
@@ -35,7 +35,8 @@ export default {
     return {
       obj: {
         a: 'a'
-      }
+      },
+      msg: ''
     }
   },
   created() {
@@ -43,16 +44,22 @@ export default {
     console.log('name', name)
     console.log('num in App', num)
     console.log('process', process.env.VERSION)
+  },
+  methods: {
+    myClick(val, code) {
+      console.log('val: ', val, code)
+      this.msg = 'msg'
+    }
   }
 }
 </script>
 
-<style scoped>
+<style>
 .bg-red {
   background-color: red;
 }
 </style>
-<style lang="scss" scoped>
+<style lang="scss">
 #nav {
   background-color: antiquewhite;
 }

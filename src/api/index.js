@@ -4,7 +4,7 @@ const CancelToken = axios.CancelToken
 const source = CancelToken.source()
 
 const service = axios.create({
-  // baseURL: 'http://127.0.0.1:3000/',
+  baseURL: 'http://127.0.0.1:3000/api',
   timeout: 6000,
   cancelToken: source.token
 })
