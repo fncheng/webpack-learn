@@ -6,6 +6,8 @@ import './index.scss'
 import './index.css'
 import { num } from './use'
 import splitChunk from './splitChunk'
+import './assets/svg/index'
+import 'element-ui/lib/theme-chalk/index.css'
 console.log('splitChunk: ', splitChunk)
 console.log('num', num)
 console.log(33333)

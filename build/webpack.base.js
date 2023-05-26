@@ -100,7 +100,14 @@ module.exports = (env) => {
           ]
         },
         { test: /\.(jpeg|png)/i, type: 'asset' },
-        { test: /\.gif/i, type: 'asset' }
+        { test: /\.gif/i, type: 'asset' },
+        {
+          test: /\.svg/i,
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: 'icon-[name]'
+          }
+        }
       ]
     },
     plugins: [
