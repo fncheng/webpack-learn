@@ -31,6 +31,9 @@ module.exports = merge(webpackBase(), {
       }
     ]
   },
+  externals: {
+    vue: 'Vue'
+  },
   plugins: [
     new CopyPlugin({
       patterns: [
