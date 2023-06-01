@@ -6,6 +6,7 @@ const svgToMiniDataURI = require('mini-svg-data-uri')
 const CopyPlugin = require('copy-webpack-plugin')
 const { setBuildPath } = require('./utils')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PrerenderSPAPlugin = require('@dreysolano/prerender-spa-plugin')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackBase(), {
@@ -45,6 +46,12 @@ module.exports = merge(webpackBase(), {
     }),
     new MiniCssExtractPlugin({
       filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
+    }),
+    new PrerenderSPAPlugin({
+      // Required - The path to the webpack-outputted app to prerender.
+      staticDir: path.resolve(__dirname, '../dist/'),
+      // Required - Routes to render.
+      routes: ['/about']
     })
   ],
   optimization: {

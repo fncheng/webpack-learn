@@ -15,6 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@dreysolano/prerender-spa-plugin": "^1.0.3",
     "@types/webpack": "^5.28.1",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-preset-jsx": "^1.2.4",

@@ -24,7 +24,7 @@ const syncRoutes = [
 ]
 console.log('process.env.routerBase', process.env.routerBase);
 const router = new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   base: process.env.routerBase,
   routes: syncRoutes
 })
