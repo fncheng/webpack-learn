@@ -1,0 +1,56 @@
+{
+  "printWidth": 80,
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.test.js",
+      "options": {
+        "semi": true
+      }
+    },
+    {
+      "files": ["*.html"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.css"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.less"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.js"],
+      "options": {
+        "arrowParens": "always",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5"
+      }
+    },
+    {
+      "files": ["*.json"],
+      "options": {
+        "semi": true,
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.vue"],
+      "options": {
+        "arrowParens": "always",
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "none"
+      }
+    }
+  ]
+}
