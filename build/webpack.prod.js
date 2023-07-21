@@ -29,7 +29,8 @@ module.exports = merge(webpackBase(), {
             return svgToMiniDataURI(content)
           }
         }
-      }
+      },
+      { test: /\.ico/i, type: 'asset' }
     ]
   },
   externals: {
@@ -41,6 +42,10 @@ module.exports = merge(webpackBase(), {
         {
           from: path.resolve(__dirname, '../static'),
           to: path.resolve(__dirname, '../dist/static/dll')
+        },
+        {
+          from: path.resolve(__dirname, '../public/favicon.ico'),
+          to: path.resolve(__dirname, '../dist')
         }
       ]
     }),
