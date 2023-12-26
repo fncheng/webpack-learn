@@ -9,6 +9,9 @@
       <button @click="asyncComponentShow = true">加载异步组件</button>
       <async-component v-if="asyncComponentShow"></async-component>
     </div>
+    <div>
+      <el-input v-model="msg"></el-input>
+    </div>
   </div>
 </template>
 
@@ -16,11 +19,13 @@
 const AsyncComponent = () =>
   import(/* webpackChunkName: "AsyncComponent" */ '../components/AsyncComponent.vue')
 import SvgIcon from '../components/SvgIcon.vue'
+import { Input } from 'element-ui'
 export default {
-  components: { SvgIcon, AsyncComponent },
+  components: { SvgIcon, AsyncComponent, ElInput: Input },
   data() {
     return {
-      asyncComponentShow: false
+      asyncComponentShow: false,
+      msg: ''
     }
   },
   created() {
