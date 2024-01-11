@@ -91,9 +91,12 @@ export default {
         this.names = []
         this.widths = []
         for (const item of document.querySelectorAll('.el-table__body colgroup col')) {
+          console.log('item: ', item)
+          // names存储col中的name属性，widths则存储col的width属性
           this.names.push(item.getAttribute('name'))
           this.widths.push(item.getAttribute('width'))
         }
+        // setWidths和setRows分别给虚拟列表中的每个单元格设置宽度和top、height属性
         this.setWidth()
         this.setRows()
       })
@@ -109,22 +112,27 @@ export default {
     setRows() {
       for (const [index] of this.tempList.entries()) {
         const rows = document.querySelectorAll('.rows')
+        console.log('rows: ', rows)
         rows[index].style.top = `${(index + this.start) * this.rowHeight}px`
         rows[index].style.height = `${this.rowHeight}px`
       }
     },
     handleScroll(el) {
+      // 取整，~~效率比Math.floor还要高
       const start = ~~(el.target.scrollTop / this.rowHeight)
+      console.log('start: ', start)
       // 若陣列一樣則不用重繪表格，減少畫面更新次數
       if (start === this.start) return
 
       this.start = start
       this.scrolling = true
+      // 更新截取的数据
       this.tempList = this.tableData.slice(this.start, this.end)
       this.$nextTick(() => {
         this.setWidth()
         this.setRows()
 
+        // 这部分是处理第一列checkbox勾选状态回显的
         // 畫面重新回到之前勾選的選項時，需勾選回去
         const selected = this.tempList.filter((item) => this.totalSelection.includes(item.id))
         for (const row of selected) this.$refs.table.toggleRowSelection(row, true)
