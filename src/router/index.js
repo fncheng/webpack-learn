@@ -15,6 +15,11 @@ const syncRoutes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
+  {
+    path: '/jsx',
+    name: 'JSX',
+    component: () => import('../views/jsx.vue')
+  }
 ]
 console.log('process.env.routerBase', process.env.routerBase)
 const router = new VueRouter({
