@@ -12,6 +12,10 @@
     <div>
       <el-input v-model="msg"></el-input>
     </div>
+    <div>
+      <input ref="fileUpload" type="file" :value="fileList" />
+      <button @click="handleUpload">上传</button>
+    </div>
   </div>
 </template>
 
@@ -25,19 +29,17 @@ export default {
   data() {
     return {
       asyncComponentShow: false,
-      msg: ''
+      msg: '',
+      fileList: []
     }
   },
-  created() {
-    console.log('devtool1')
-    console.log('devtool2')
-    console.log('devtool3')
-  },
-  mounted() {
-    console.log('mounted1')
-  },
+  created() {},
+  mounted() {},
   methods: {
-    loadComponent() {}
+    loadComponent() {},
+    handleUpload() {
+      console.log(this.$refs['fileUpload'].files)
+    }
   }
 }
 </script>

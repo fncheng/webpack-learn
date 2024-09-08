@@ -25,6 +25,6 @@ module.exports = {
       // 针对会被 ESLint 格式化的文件类型，Prettier 会作为 ESLint 的一个规则运行并格式化文件，因此需要添加如下配置
       { printWidth: 100, semi: false, singleQuote: true, trailingComma: 'none' }
     ],
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'warn'
   }
 }

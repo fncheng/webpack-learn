@@ -6,7 +6,7 @@ const svgToMiniDataURI = require('mini-svg-data-uri')
 const CopyPlugin = require('copy-webpack-plugin')
 const { setBuildPath } = require('./utils')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const PrerenderSPAPlugin = require('@dreysolano/prerender-spa-plugin')
+// const PrerenderSPAPlugin = require('@dreysolano/prerender-spa-plugin')
 
 console.log('【process.env】prod', process.env.NODE_ENV)
 module.exports = merge(webpackBase(), {
@@ -34,30 +34,39 @@ module.exports = merge(webpackBase(), {
     ]
   },
   externals: {
-    vue: 'Vue'
+    vue: 'Vue',
+    'vue-router': 'VueRouter'
   },
   plugins: [
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, '../static'),
-          to: path.resolve(__dirname, '../dist/static/dll')
+          to: path.resolve(__dirname, '../dist/libs/')
         },
         {
           from: path.resolve(__dirname, '../public/favicon.ico'),
-          to: path.resolve(__dirname, '../dist')
+          to: path.resolve(__dirname, '../dist/libs/')
+        },
+        {
+          from: 'node_modules/vue/dist/vue.runtime.min.js',
+          to: path.resolve(__dirname, '../dist/libs/')
+        },
+        {
+          from: 'node_modules/vue-router/dist/vue-router.min.js',
+          to: path.resolve(__dirname, '../dist/libs/')
         }
       ]
     }),
     new MiniCssExtractPlugin({
       filename: (process.env.buildPath ?? '') + 'css/[name].[chunkhash].css'
-    }),
-    new PrerenderSPAPlugin({
-      // Required - The path to the webpack-outputted app to prerender.
-      staticDir: path.resolve(__dirname, '../dist/'),
-      // Required - Routes to render.
-      routes: ['/about']
     })
+    // new PrerenderSPAPlugin({
+    //   // Required - The path to the webpack-outputted app to prerender.
+    //   staticDir: path.resolve(__dirname, '../dist/'),
+    //   // Required - Routes to render.
+    //   routes: ['/about']
+    // })
   ],
   optimization: {
     splitChunks: {
